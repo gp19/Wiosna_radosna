@@ -3,8 +3,8 @@
  */
 public class Thing {
 
-    private int mValue;
-    private int mSize;
+    private int mValue; //Zmienna przechowujaca wartosc przedmiotu
+    private int mSize; //Zmienna przechowujaca rozmiar przedmiotu
 
     public Thing(int value, int size){
         mValue = value;
