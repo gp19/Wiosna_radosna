@@ -2,23 +2,25 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Created by Grzesław on 2017-10-12.
+ * Created by gp19 on 2017-10-12.
  */
 public class Main {
 
-    static int n; //liczba przedmiotow
+    static int n = 0; //liczba przedmiotow
     static int J, S; //rozmiary plecakow Jasia i Stasia
-    ArrayList<Thing> things = new ArrayList<>(); //tablica przechowujaca wartosci i rozmiary przedmiotow
+    static ArrayList<Thing> things = new ArrayList<>(); //tablica przechowujaca wartosci i rozmiary przedmiotow
 
     static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        getBasicData();
+        getBasicData(); //pobranie liczby przedmiotow oraz rozmiarow plecakow Jasia i Stasia
+        getThingsParameters(); //wywolanie funkcji wczytujacej rozmiary i wartosci rzeczy i zapisanie ich w tablicy things
 
     }
 
     public static void getBasicData() {
+
         int k;
 
         do {
@@ -35,6 +37,17 @@ public class Main {
             if (k == 1) System.out.println("Incorrect input.\n");
 
         } while (k == 1);
+
+    }
+
+    public static void getThingsParameters() {
+
+        for (int i = 0; i < n; i++) {
+            Thing thing;
+            thing = new Thing(input.nextInt(), input.nextInt());
+            things.add(thing);
+        }
+
     }
 
 }

@@ -1,5 +1,5 @@
 /**
- * Created by Grzesław on 2017-10-12.
+ * Created by gp19 on 2017-10-12.
  */
 public class Thing {
 
