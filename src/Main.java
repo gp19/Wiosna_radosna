@@ -6,16 +6,16 @@ import java.util.Scanner;
  */
 public class Main {
 
-    static int n = 0; //Liczba przedmiotow
-    static int J, S; //Rozmiary plecakow Jasia i Stasia
-    static ArrayList<Thing> things = new ArrayList<>(); //Tablica przechowujaca wartosci i rozmiary przedmiotow
+    private static int n = 0; //Liczba przedmiotow
+    private static int J, S; //Rozmiary plecakow Jasia i Stasia
+    private static ArrayList<Item> items = new ArrayList<>(); //Tablica przechowujaca wartosci i rozmiary przedmiotow
 
     static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
 
         getBasicData(); //Pobranie liczby przedmiotow oraz rozmiarow plecakow Jasia i Stasia
-        getThingsParameters(); //Wywolanie funkcji wczytujacej rozmiary i wartosci rzeczy i zapisanie ich w tablicy things
+        getItemsParameters(); //Wywolanie funkcji wczytujacej rozmiary i wartosci rzeczy i zapisanie ich w tablicy things
 
     }
 
@@ -35,7 +35,7 @@ public class Main {
             //Zabezpieczenie zakresu zmiennych
             if (n < 0 | n > 100) k = 1;
             if (J < 0 | J > 500) k = 1;
-            if (S < 0 | J > 500) k = 1;
+            if (S < 0 | S > 500) k = 1;
 
             if (k == 1) System.out.println("Incorrect input.\n"); //Informacja o niepoprawnym wejsciu
 
@@ -44,14 +44,27 @@ public class Main {
     }
 
     //Funkcja do wczytywania wartosci oraz rozmiarow przedmiotow, zapisywanie danych w ArrayList
-    public static void getThingsParameters() {
+    public static void getItemsParameters() {
 
         for (int i = 0; i < n; i++) {
-            Thing thing;
-            thing = new Thing(input.nextInt(), input.nextInt()); //Zapisanie do obiektu jego wartosci i rozmiaru z biezacego wejscia
-            things.add(thing); //Dodanie kolejnego przedmiotu do ArrayList
+
+            int k;
+            int value, size;
+
+            do {
+                k = 0;
+
+                value = input.nextInt();
+                size = input.nextInt();
+
+                if (value > 100 | size > 100 | value < 1 | size < 1) k = 1;
+
+                if(k==1) System.out.println("Incorrect input");
+
+            } while (k == 1);
+
+            items.add(new Item(value, size)); //Dodanie kolejnego przedmiotu do ArrayList
+
         }
-
     }
-
 }
