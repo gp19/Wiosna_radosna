@@ -4,14 +4,14 @@
 public class Solution {
 
     private int mMaxValue;
-    private String mFirstKnapstackIndices;
-    private String mSecondKnapstackIndices;
+    private String mFirstKnapsackIndices;
+    private String mSecondKnapsackIndices;
 
-    public Solution(int maxValue, String firstKnapstackIndices, String secondKnapstackIndices){
+    public Solution(int maxValue, String firstKnapsackIndices, String secondKnapsackIndices){
 
         mMaxValue = maxValue;
-        mFirstKnapstackIndices = firstKnapstackIndices;
-        mSecondKnapstackIndices = secondKnapstackIndices;
+        mFirstKnapsackIndices = firstKnapsackIndices;
+        mSecondKnapsackIndices = secondKnapsackIndices;
 
     }
 
@@ -19,12 +19,12 @@ public class Solution {
         return mMaxValue;
     }
 
-    public String getFirstKnapstackIndices(){
-        return mFirstKnapstackIndices;
+    public String getFirstKnapsackIndices(){
+        return mFirstKnapsackIndices;
     }
 
-    public String getSecondKnapstackIndices(){
-        return mSecondKnapstackIndices;
+    public String getSecondKnapsackIndices(){
+        return mSecondKnapsackIndices;
     }
 
 }

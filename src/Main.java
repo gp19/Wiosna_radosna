@@ -19,6 +19,11 @@ public class Main {
         getBasicData(); //Pobranie liczby przedmiotow oraz rozmiarow plecakow Jasia i Stasia
         getItemsParameters(); //Wywolanie funkcji wczytujacej rozmiary i wartosci rzeczy i zapisanie ich w tablicy things
         sortObjects(); //Sortuj obiekty wedlug ilorazu wartosci i rozmiaru od najwiekszego do najmniejszego
+        calculateSolution(J, S, 0); //Oblicz rozwiazania, pierwsze - zaczynajac od pierwszego plecaka, drugie - zaczynajac od drugiego
+        calculateSolution(S, J, 1); //Oblicz rozwiazania, pierwsze - zaczynajac od pierwszego plecaka, drugie - zaczynajac od drugiego
+
+        System.out.println("\n" + solutions[0].getMaxValue() + "\n" + solutions[0].getFirstKnapsackIndices() + "\n" + solutions[0].getSecondKnapsackIndices());
+        System.out.println("\n\n" + solutions[1].getMaxValue() + "\n" + solutions[1].getFirstKnapsackIndices() + "\n" + solutions[1].getSecondKnapsackIndices());
 
     }
 
@@ -66,7 +71,7 @@ public class Main {
 
             } while (k == 1);
 
-            items.add(new Item(value, size)); //Dodanie kolejnego przedmiotu do ArrayList
+            items.add(new Item(value, size, i + 1)); //Dodanie kolejnego przedmiotu do ArrayList
 
         }
     }
@@ -82,11 +87,45 @@ public class Main {
                 if (items.get(i + 1).getQuotient() > items.get(i).getQuotient()) {
                     k = 1;
                     term = items.get(i);
-                    items.set(i, items.get(i+1));
-                    items.set(i+1, term);
+                    items.set(i, items.get(i + 1));
+                    items.set(i + 1, term);
                 }
             }
         } while (k == 1);
+
+    }
+
+    //Funkcja obliczajaca rozwiazanie dla dwoch plecakow w danej kolejnosci na podstawie ilorazu wartosci i rozmiaru przedmiotow
+    public static void calculateSolution(int firstKnapsackCapacity, int secondKnapsackCapacity, int solutionIndex) {
+
+        int maxValue = 0;
+        String firstKnapsackIndices = "";
+        String secondKnapsackIndices = "";
+
+        for (int i = 0; i < n; i++) {
+
+            Item currentItem = items.get(i);
+
+            if (currentItem.getSize() <= firstKnapsackCapacity) {
+
+                firstKnapsackCapacity -= currentItem.getSize();
+                maxValue += currentItem.getValue();
+                firstKnapsackIndices += currentItem.getIndex();
+
+            } else {
+
+                if (currentItem.getSize() <= secondKnapsackCapacity) {
+                    secondKnapsackCapacity -= currentItem.getSize();
+                    maxValue += currentItem.getSize();
+                    secondKnapsackIndices += currentItem.getIndex();
+
+                } else {
+
+                }
+            }
+        }
+
+        solutions[solutionIndex] = new Solution(maxValue, firstKnapsackIndices, secondKnapsackIndices);
 
     }
 }

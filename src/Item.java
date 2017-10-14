@@ -6,11 +6,13 @@ public class Item {
     private int mValue; //Zmienna przechowujaca wartosc przedmiotu
     private int mSize; //Zmienna przechowujaca rozmiar przedmiotu
     private double mQuotient;
+    private String mIndex;
 
-    public Item(int value, int size) {
+    public Item(int value, int size, int index) {
 
         mValue = value;
         mSize = size;
+        mIndex = Integer.toString(index);
 
         mQuotient = (double) mValue / (double) mSize;
 
@@ -26,6 +28,10 @@ public class Item {
 
     public double getQuotient() {
         return mQuotient;
+    }
+
+    public String getIndex() {
+        return mIndex;
     }
 
 }
