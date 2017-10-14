@@ -10,6 +10,7 @@ public class Main {
     private static int n = 0; //Liczba przedmiotow
     private static int J, S; //Rozmiary plecakow Jasia i Stasia
     private static ArrayList<Item> items = new ArrayList<>(); //Tablica przechowujaca wartosci i rozmiary przedmiotow
+    private static Solution[] solutions = new Solution[2]; //Tablica przechowujaca dwa mozliwe rozwiazania
 
     static Scanner input = new Scanner(System.in);
 
@@ -17,11 +18,7 @@ public class Main {
 
         getBasicData(); //Pobranie liczby przedmiotow oraz rozmiarow plecakow Jasia i Stasia
         getItemsParameters(); //Wywolanie funkcji wczytujacej rozmiary i wartosci rzeczy i zapisanie ich w tablicy things
-        sortObjects(); //Sortuj obiekty wedlug ilorazy wartosci i rozmiaru od najwiekszego do najmniejszego
-
-        for(int i = 0;i<n;i++){
-            System.out.println("" + items.get(i).getValue()+ " " + items.get(i).getSize()+ " " + items.get(i).getQuotient());
-        }
+        sortObjects(); //Sortuj obiekty wedlug ilorazu wartosci i rozmiaru od najwiekszego do najmniejszego
 
     }
 
@@ -74,7 +71,7 @@ public class Main {
         }
     }
 
-    //Funkcja sortujaca przedmiotu wedlug ilorazu wartosci i rozmiaru od najwiekszej do najmmniejszej
+    //Funkcja sortujaca przedmioty wedlug ilorazu wartosci i rozmiaru od najwiekszej do najmmniejszej
     public static void sortObjects() {
 
         int k;
@@ -90,5 +87,6 @@ public class Main {
                 }
             }
         } while (k == 1);
+
     }
 }
