@@ -5,13 +5,15 @@ public class Item {
 
     private int mValue; //Zmienna przechowujaca wartosc przedmiotu
     private int mSize; //Zmienna przechowujaca rozmiar przedmiotu
-    private int mQuotient;
+    private double mQuotient;
 
     public Item(int value, int size) {
+
         mValue = value;
         mSize = size;
 
-        mQuotient = mValue / mSize;
+        mQuotient = (double) mValue / (double) mSize;
+
     }
 
     public int getValue() {
@@ -22,7 +24,7 @@ public class Item {
         return mSize;
     }
 
-    public int getQuotient() {
+    public double getQuotient() {
         return mQuotient;
     }
 

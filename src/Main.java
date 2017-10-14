@@ -6,6 +6,7 @@ import java.util.Scanner;
  */
 public class Main {
 
+    static Item term;
     private static int n = 0; //Liczba przedmiotow
     private static int J, S; //Rozmiary plecakow Jasia i Stasia
     private static ArrayList<Item> items = new ArrayList<>(); //Tablica przechowujaca wartosci i rozmiary przedmiotow
@@ -16,6 +17,11 @@ public class Main {
 
         getBasicData(); //Pobranie liczby przedmiotow oraz rozmiarow plecakow Jasia i Stasia
         getItemsParameters(); //Wywolanie funkcji wczytujacej rozmiary i wartosci rzeczy i zapisanie ich w tablicy things
+        sortObjects(); //Sortuj obiekty wedlug ilorazy wartosci i rozmiaru od najwiekszego do najmniejszego
+
+        for(int i = 0;i<n;i++){
+            System.out.println("" + items.get(i).getValue()+ " " + items.get(i).getSize()+ " " + items.get(i).getQuotient());
+        }
 
     }
 
@@ -59,12 +65,30 @@ public class Main {
 
                 if (value > 100 | size > 100 | value < 1 | size < 1) k = 1;
 
-                if(k==1) System.out.println("Incorrect input");
+                if (k == 1) System.out.println("Incorrect input");
 
             } while (k == 1);
 
             items.add(new Item(value, size)); //Dodanie kolejnego przedmiotu do ArrayList
 
         }
+    }
+
+    //Funkcja sortujaca przedmiotu wedlug ilorazu wartosci i rozmiaru od najwiekszej do najmmniejszej
+    public static void sortObjects() {
+
+        int k;
+
+        do {
+            k = 0;
+            for (int i = 0; i < n - 1; i++) {
+                if (items.get(i + 1).getQuotient() > items.get(i).getQuotient()) {
+                    k = 1;
+                    term = items.get(i);
+                    items.set(i, items.get(i+1));
+                    items.set(i+1, term);
+                }
+            }
+        } while (k == 1);
     }
 }
