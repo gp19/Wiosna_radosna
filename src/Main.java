@@ -110,14 +110,14 @@ public class Main {
 
                 firstKnapsackCapacity -= currentItem.getSize();
                 maxValue += currentItem.getValue();
-                firstKnapsackIndices += currentItem.getIndex();
+                firstKnapsackIndices += currentItem.getIndex() + " ";
 
             } else {
 
                 if (currentItem.getSize() <= secondKnapsackCapacity) {
                     secondKnapsackCapacity -= currentItem.getSize();
-                    maxValue += currentItem.getSize();
-                    secondKnapsackIndices += currentItem.getIndex();
+                    maxValue += currentItem.getValue();
+                    secondKnapsackIndices += currentItem.getIndex() + " ";
 
                 } else {
 
