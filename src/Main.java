@@ -90,6 +90,13 @@ public class Main {
                     items.set(i, items.get(i + 1));
                     items.set(i + 1, term);
                 }
+
+                if ((items.get(i + 1).getQuotient() == items.get(i).getQuotient()) & (items.get(i + 1).getSize() > items.get(i).getSize())) {
+                    k = 1;
+                    term = items.get(i);
+                    items.set(i, items.get(i + 1));
+                    items.set(i + 1, term);
+                }
             }
         } while (k == 1);
 
