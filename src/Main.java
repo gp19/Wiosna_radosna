@@ -4,15 +4,14 @@ import java.util.Scanner;
 /**
  * Created by gp19 on 2017-10-12.
  */
-public class Main {
+class Main {
 
-    static Item term;
     private static int n = 0; //Liczba przedmiotow
     private static int J, S; //Rozmiary plecakow Jasia i Stasia
-    private static ArrayList<Item> items = new ArrayList<>(); //Tablica przechowujaca wartosci i rozmiary przedmiotow
-    private static Solution[] solutions = new Solution[2]; //Tablica przechowujaca dwa mozliwe rozwiazania
+    private static final ArrayList<Item> items = new ArrayList<>(); //Tablica przechowujaca wartosci i rozmiary przedmiotow
+    private static final Solution[] solutions = new Solution[2]; //Tablica przechowujaca dwa mozliwe rozwiazania
 
-    static Scanner input = new Scanner(System.in);
+    private static final Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
 
@@ -28,7 +27,7 @@ public class Main {
     }
 
     //Funkcja do wczytywania liczby przedmiotow oraz pojemnosci plecakow
-    public static void getBasicData() {
+    private static void getBasicData() {
 
         int k;
 
@@ -52,7 +51,7 @@ public class Main {
     }
 
     //Funkcja do wczytywania wartosci oraz rozmiarow przedmiotow, zapisywanie danych w ArrayList
-    public static void getItemsParameters() {
+    private static void getItemsParameters() {
 
         for (int i = 0; i < n; i++) {
 
@@ -77,13 +76,14 @@ public class Main {
     }
 
     //Funkcja sortujaca przedmioty wedlug ilorazu wartosci i rozmiaru od najwiekszej do najmmniejszej
-    public static void sortObjects() {
+    private static void sortObjects() {
 
         int k;
 
         do {
             k = 0;
             for (int i = 0; i < n - 1; i++) {
+                Item term;
                 if (items.get(i + 1).getQuotient() > items.get(i).getQuotient()) {
                     k = 1;
                     term = items.get(i);
@@ -103,11 +103,11 @@ public class Main {
     }
 
     //Funkcja obliczajaca rozwiazanie dla dwoch plecakow w danej kolejnosci na podstawie ilorazu wartosci i rozmiaru przedmiotow
-    public static void calculateSolution(int firstKnapsackCapacity, int secondKnapsackCapacity, int solutionIndex) {
+    private static void calculateSolution(int firstKnapsackCapacity, int secondKnapsackCapacity, int solutionIndex) {
 
         int maxValue = 0;
-        String firstKnapsackIndices = "";
-        String secondKnapsackIndices = "";
+        StringBuilder firstKnapsackIndices = new StringBuilder();
+        StringBuilder secondKnapsackIndices = new StringBuilder();
 
         for (int i = 0; i < n; i++) {
 
@@ -117,22 +117,20 @@ public class Main {
 
                 firstKnapsackCapacity -= currentItem.getSize();
                 maxValue += currentItem.getValue();
-                firstKnapsackIndices += currentItem.getIndex() + " ";
+                firstKnapsackIndices.append(currentItem.getIndex()).append(" ");
 
             } else {
 
                 if (currentItem.getSize() <= secondKnapsackCapacity) {
                     secondKnapsackCapacity -= currentItem.getSize();
                     maxValue += currentItem.getValue();
-                    secondKnapsackIndices += currentItem.getIndex() + " ";
-
-                } else {
-
+                    secondKnapsackIndices.append(currentItem.getIndex()).append(" ");
                 }
+
             }
         }
 
-        solutions[solutionIndex] = new Solution(maxValue, firstKnapsackIndices, secondKnapsackIndices);
+        solutions[solutionIndex] = new Solution(maxValue, firstKnapsackIndices.toString(), secondKnapsackIndices.toString());
 
     }
 }

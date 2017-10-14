@@ -1,12 +1,12 @@
 /**
  * Created by gp19 on 2017-10-12.
  */
-public class Item {
+class Item {
 
-    private int mValue; //Zmienna przechowujaca wartosc przedmiotu
-    private int mSize; //Zmienna przechowujaca rozmiar przedmiotu
-    private double mQuotient;
-    private String mIndex;
+    private final int mValue; //Zmienna przechowujaca wartosc przedmiotu
+    private final int mSize; //Zmienna przechowujaca rozmiar przedmiotu
+    private final double mQuotient;
+    private final String mIndex;
 
     public Item(int value, int size, int index) {
 

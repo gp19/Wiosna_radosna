@@ -1,11 +1,11 @@
 /**
- * Created by Grzesław on 2017-10-14.
+ * Created by gp19 on 2017-10-14.
  */
-public class Solution {
+class Solution {
 
-    private int mMaxValue;
-    private String mFirstKnapsackIndices;
-    private String mSecondKnapsackIndices;
+    private final int mMaxValue;
+    private final String mFirstKnapsackIndices;
+    private final String mSecondKnapsackIndices;
 
     public Solution(int maxValue, String firstKnapsackIndices, String secondKnapsackIndices){
 
